@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/StudentManagement.iml" filepath="$PROJECT_DIR$/.idea/modules/StudentManagement.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Dai5kaiEnsyuuKadai/StudentManagement.Dai5kaiEnsyuuKadai.iml" filepath="$PROJECT_DIR$/.idea/modules/Dai5kaiEnsyuuKadai/StudentManagement.Dai5kaiEnsyuuKadai.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/StudentManagement.main.iml" filepath="$PROJECT_DIR$/.idea/modules/StudentManagement.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/StudentManagement.test.iml" filepath="$PROJECT_DIR$/.idea/modules/StudentManagement.test.iml" />
     </modules>
   </component>
 </project>
