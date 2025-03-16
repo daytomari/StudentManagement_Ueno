@@ -38,52 +38,7 @@ public class StudentService {
       studentsCourses.setStudentId(studentDetail.getStudent().getId());
       studentsCourses.setCourseStartDt(LocalDateTime.now());
       studentsCourses.setCourseEndDt(LocalDateTime.now().plusYears(1));
-      repository.registerStudentsCou
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    rses(studentsCourses);
+      repository.registerStudentsCourses(studentsCourses);
 //      repository.registerStudentsCourses(studentDetail.getStudentsCourses());
     }
 
