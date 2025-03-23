@@ -3,8 +3,8 @@ package raiseTech.StudentManagement.service;
 import java.time.LocalDateTime;
 import java.util.List;
 import org.springframework.transaction.annotation.Transactional;
-import raiseTech.StudentManagement.Data.Student;
-import raiseTech.StudentManagement.Data.StudentsCourses;
+import raiseTech.StudentManagement.data.Student;
+import raiseTech.StudentManagement.data.StudentsCourses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import raiseTech.StudentManagement.repository.StudentRepository;
@@ -26,8 +26,22 @@ public class StudentService {
   }
 
   public List<StudentsCourses> searchStudentCourseList() {
-    return repository.searchStudentsCourses();
+    return repository.searchStudentsCoursesList();
 
+  }
+
+//  public StudentDetail searchStudent(String id) {
+//    Student student = repository.searchStudent(id);
+//
+//  }
+
+  public StudentDetail searchStudent(String id){
+    Student student = repository.searchStudent(id);
+    List<StudentsCourses> studentsCourses = repository.searchStudentsCourses(student.getId());
+    StudentDetail studentDetail = new StudentDetail();
+    studentDetail.setStudent(student);
+    studentDetail.setStudentsCourses(studentsCourses);
+    return studentDetail;
   }
 
   @Transactional
@@ -36,18 +50,21 @@ public class StudentService {
     //TODO:コース情報処理も行う。
     for (StudentsCourses studentsCourses : studentDetail.getStudentsCourses()) {
       studentsCourses.setStudentId(studentDetail.getStudent().getId());
-      studentsCourses.setCourseStartDt(LocalDateTime.now());
-      studentsCourses.setCourseEndDt(LocalDateTime.now().plusYears(1));
+      studentsCourses.setCourseStartAt(LocalDateTime.now());
+      studentsCourses.setCourseEndAt(LocalDateTime.now().plusYears(1));
       repository.registerStudentsCourses(studentsCourses);
 //      repository.registerStudentsCourses(studentDetail.getStudentsCourses());
     }
 
   }
 
+  @Transactional
+  public void updateStudent(StudentDetail studentDetail) {
+    repository.updateStudent(studentDetail.getStudent());
+    for (StudentsCourses studentsCourses : studentDetail.getStudentsCourses()) {
+      repository.updateStudentsCourses(studentsCourses);
+//      repository.registerStudentsCourses(studentDetail.getStudentsCourses());
+
+    }
+  }
 }
-
-
-
-
-
-
